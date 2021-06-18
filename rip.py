@@ -23,10 +23,10 @@ def generate_gaussian_kernel(size=5, sigma=1):
 
 def compute_gradients(img, edge_x, edge_y):
     gaussian = generate_gaussian_kernel()
-    kernel_x = signal.convolve2d(gaussian, edge_x)
-    kernel_y = signal.convolve2d(gaussian, edge_y)
-    gradient_x = signal.convolve2d(img, kernel_x)
-    gradient_y = signal.convolve2d(img, kernel_y)
+    kernel_x = signal.convolve2d(gaussian, edge_x, 'same')
+    kernel_y = signal.convolve2d(gaussian, edge_y, 'same')
+    gradient_x = signal.convolve2d(img, kernel_x, 'same')
+    gradient_y = signal.convolve2d(img, kernel_y, 'same')
     return gradient_x, gradient_y
 
 def compute_gradient_magnitude(gradient_x, gradient_y):
