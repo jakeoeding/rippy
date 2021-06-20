@@ -39,7 +39,7 @@ def compute_energy(img_rgb):
     gx, gy = compute_gradients(img_rgb)
     return np.sqrt(gx ** 2 + gy ** 2)
 
-def find_vertical_seam(energy):
+def accumulate_energy(energy):
     rows, columns = energy.shape
 
     middle_ixs = np.arange(columns)
@@ -55,6 +55,12 @@ def find_vertical_seam(energy):
         min_ancestor = np.minimum(min_ancestor, prior_row[right_ixs])
         cumulative_energy[i] = energy[i] + min_ancestor
 
+    return cumulative_energy
+
+@jit
+def trace_seam(cumulative_energy):
+    rows, columns = cumulative_energy.shape
+
     seam = np.zeros(rows, dtype=np.int32)
     seam[-1] = np.argmin(cumulative_energy[-1])
 
@@ -68,6 +74,10 @@ def find_vertical_seam(energy):
         seam[i] = max(middle + direction, 0)
 
     return seam
+
+def find_vertical_seam(energy):
+    cumulative_energy = accumulate_energy(energy)
+    return trace_seam(cumulative_energy)
 
 @jit
 def carve_vertical_seam(current_rgb, seam):
