@@ -96,11 +96,22 @@ def carve_vertical(img, num_seams):
         img_rgb = carve_vertical_seam(img_rgb, seam)
     return Image.fromarray(img_rgb.astype(np.uint8), 'RGB')
 
+def carve_horizontal(img, num_seams):
+    horz_img = img.transpose(Image.ROTATE_270)
+    img_out = carve_vertical(horz_img, num_seams)
+    return img_out.transpose(Image.ROTATE_90)
+
+def carve(img, num_vert=0, num_horz=0):
+    if num_vert:
+        img = carve_vertical(img, num_vert)
+    if num_horz:
+        img = carve_horizontal(img, num_horz)
+    return img
+
 
 if __name__ == '__main__':
     img_path = 'img/broadway_tower.jpg'
     img = Image.open(img_path)
-    img_out = carve_vertical(img, 300)
-    print(np.array(img_out).shape)
+    img_out = carve(img, 300, 100)
     plt.imshow(img_out)
     plt.show()
