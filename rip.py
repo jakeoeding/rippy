@@ -65,7 +65,7 @@ def find_vertical_seam(energy):
         right = min(columns - 1, middle + 1)
         options = np.array([row[left], row[middle], row[right]])
         direction = np.argmin(options) - 1
-        seam[i] = seam[i + 1] + direction
+        seam[i] = max(middle + direction, 0)
 
     return seam
 
