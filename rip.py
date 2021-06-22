@@ -91,18 +91,11 @@ def carve_vertical_seam(current_rgb, seam):
 
     return new_rgb
 
-def visualize_seam(img_rgb, seam):
-    rows = np.arange(img_rgb.shape[0])
-    img_rgb[rows, seam] = np.array([255, 0, 0])
-    plt.imshow(img_rgb.astype(np.uint8))
-    plt.show()
-
 def carve_vertical(img, num_seams):
     img_rgb = np.array(img)
     for _ in range(num_seams):
         energy = compute_energy(img_rgb)
         seam = find_vertical_seam(energy)
-        # visualize_seam(img_rgb, seam)
         img_rgb = carve_vertical_seam(img_rgb, seam)
     return Image.fromarray(img_rgb.astype(np.uint8), 'RGB')
 
