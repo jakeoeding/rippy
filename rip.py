@@ -113,8 +113,18 @@ def carve(img, num_vert=0, num_horz=0):
 
 
 if __name__ == '__main__':
-    img_path = 'img/broadway_tower.jpg'
-    img = Image.open(img_path)
-    img_out = carve(img, 300, 100)
-    plt.imshow(img_out)
-    plt.show()
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-img', help='Input image path', required=True)
+    parser.add_argument('-out', help='Output image path', required=True)
+    parser.add_argument('-vert', help='Number of vertical seams to remove', type=int, default=0)
+    parser.add_argument('-horz', help='Number of horizontal seams to remove', type=int, default=0)
+
+    args = parser.parse_args()
+    path_in, path_out = args.img, args.out
+    vert, horz = args.vert, args.horz
+
+    img = Image.open(path_in)
+    img_out = carve(img, vert, horz)
+    img_out.save(path_out)
