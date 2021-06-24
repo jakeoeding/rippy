@@ -23,36 +23,40 @@ At the moment, Rippy supports vertical seam removal, horizontal seam removal, or
 ## Examples
 
 ### Vertical Only
-Original Image:
-![Broadway Tower](img/broadway_tower.jpg)
+###### Command:
 `python3 rip.py -img img/broadway_tower.jpg -out img/broadway_tower_carved.jpg -vert 100`
 
-Carving Process:
+###### Original Image:
+![Broadway Tower](img/broadway_tower.jpg)
+
+###### Carving Process:
 ![Vertical carving demo](img/broadway_tower.gif)
 
-Resulting Image:
+###### Resulting Image:
 ![Broadway Tower (Carved)](img/broadway_tower_carved.jpg)
 
 ### Horizontal Seam Removal
+###### Command:
 `python3 rip.py -img img/corn.jpg -out img/corn_carved.jpg -horz 100`
 
-Original Image:
+###### Original Image:
 ![Corn](img/corn.jpg)
 
-Carving Process:
+###### Carving Process:
 ![Horizontal carving demo](img/corn.gif)
 
-Resulting Image:
+###### Resulting Image:
 ![Corn (Carved)](img/corn_carved.jpg)
 
 ### Vertical and Horizontal Seam Removal
+###### Command
 `python3 rip.py -img img/moon.jpg -out img/moon_carved.jpg -vert 100 -horz 100`
 
-Original Image:
+###### Original Image:
 ![Moon](img/moon.jpg)
 
-Carving Process:
+###### Carving Process:
 ![Vertical and horizontal carving demo](img/moon.gif)
 
-Resulting Image:
+###### Resulting Image:
 ![Moon (Carved)](img/moon_carved.jpg)
