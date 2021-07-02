@@ -22,7 +22,7 @@ At the moment, Rippy supports vertical seam removal, horizontal seam removal, or
 
 ## Examples
 
-### Vertical Only
+### Vertical Seam Removal
 ###### Command:
 `python3 rip.py -img img/broadway_tower.jpg -out img/broadway_tower_carved.jpg -vert 100`
 
