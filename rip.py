@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 from numba import jit
 import numpy as np
 from PIL import Image
