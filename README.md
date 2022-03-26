@@ -60,3 +60,6 @@ At the moment, Rippy supports vertical seam removal, horizontal seam removal, or
 
 ###### Resulting Image:
 ![Moon (Carved)](img/moon_carved.jpg)
+
+## License
+MIT
